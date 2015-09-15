@@ -1,0 +1,14 @@
+#clock-container {
+	display: block;
+	margin: 0 auto;
+	margin-top: 300px;
+	width: 700px;
+}
+
+#text-container {
+	margin: 0 auto;
+}
+
+#text-container span {
+	font-size: 48px;
+}
