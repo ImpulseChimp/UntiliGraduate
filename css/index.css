@@ -1,6 +1,11 @@
 body {
 	background-image: url('../assets/index_background.jpg');
 	min-height: 700px;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
 }
 
 #clock-container {
