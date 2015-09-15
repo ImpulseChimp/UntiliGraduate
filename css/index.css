@@ -1,5 +1,6 @@
 body {
 	background-image: url('../assets/index_background.jpg');
+	min-height: 700px;
 }
 
 #clock-container {
@@ -14,20 +15,22 @@ body {
 }
 
 #text-container span {
-	font-size: 48px;
+	font-size: 40px;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
-#content-footer {
-	width: 100%;
-	height: 50px;
-	border: solid 1px red;
-	display: block;
+#display-text-span {
+	margin-left: 150px;
+}
+
+#github-icon {
+	width: 70px;
+	height: 70px;
 	position: fixed;
-	bottom: 0;
 	left: 0;
-}
-
-#github-link {
-	font-size: 24px;
-	color: whitesmoke;
+	bottom: 0;
+	margin: 10px;
+	background-image: url("../assets/github_icon.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
