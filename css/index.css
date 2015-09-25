@@ -26,6 +26,8 @@ body {
 
 #display-text-span {
 	margin-left: 150px;
+	color: white;
+        text-shadow: 2px 2px black;
 }
 
 #github-icon {
