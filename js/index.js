@@ -17,22 +17,23 @@ $(document).ready(function() {
 
     textObject.textillate({ in: { loop: true, effect: 'rollIn' } });
 
-	var clock;
+    var clock;
 
     var now = new Date();
-    var graduation = new Date(2015, 12, 16, 0, 0, 0);
+    var graduation = new Date(2015, 11, 18, 0, 0, 0);
     var msTillGraduation = graduation.getTime() - now.getTime();
     var secondsTillGraduation = msTillGraduation / 1000;
 
-	clock = $('#countdown-clock').FlipClock(secondsTillGraduation, {
-        clockFace: 'DailyCounter'
+    clock = $('#countdown-clock').FlipClock(secondsTillGraduation, {
+        clockFace: 'DailyCounter',
+        countdown: true
     });
 
     setInterval(function () {
         var newText = getNewDisplayText();
         swapUntilText(newText);
     }, displaySeconds);
-		   
+           
 });
 
 function swapUntilText(text) {
