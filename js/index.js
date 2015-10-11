@@ -13,7 +13,7 @@ $(function() {
         popupHeight = 300;
     }
 
-    $('#github-link').avgrund({
+    $('#settings-link').avgrund({
         height: popupHeight,
         width: popupWidth,
         holderClass: 'custom',
