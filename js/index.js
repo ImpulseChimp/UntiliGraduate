@@ -1,28 +1,21 @@
-var countdown_date;
-var custom_background;
+
+setCookieValuesIfPossible();
 
 $(function() {
-    document.cookie="custom_background=http://i.ytimg.com/vi/Wyi1pN1PSp8/maxresdefault.jpg";
-    //Initialize cookie data if available
-    countdown_date = getCookie("countdown_date");
-    custom_background = getCookie("custom_background");
 
-    if(custom_background.length > 0) {
-        setSiteBackground(custom_background);
-    }
-
-    if(countdown_date.length > 0) {
-        setSiteCountdownTimer(custom_background);
-    }
+    var popupWidth = 600;
+    var popupHeight = 250;
 
     var settingsPopup = $('#settings-popup');
     if(!navigator.cookieEnabled) {
         settingsPopup = $('#enable-cookies-popup');
+        popupWidth = 400;
+        popupHeight = 300;
     }
 
     $('#github-link').avgrund({
-        height: 500,
-        width: 600,
+        height: popupHeight,
+        width: popupWidth,
         holderClass: 'custom',
         showClose: true,
         showCloseText: 'close',
@@ -32,8 +25,33 @@ $(function() {
         onUnload: function() { settingsPopup.hide(); }
     });
 
-    $('#countdown-date').pickadate();
+    $('#countdown-date-input').pickadate();
+    $('.tiltshift').tiltShift();
 
+});
+
+function setCookieValuesIfPossible() {
+    var countdown_date = getCookie("uig_countdown_date");
+    var custom_background = getCookie("uig_custom_background");
+
+    if(custom_background.length > 0) {
+        setSiteBackground(custom_background);
+        $("#custom-background-input").val(custom_background)
+    }
+    else {
+        setSiteBackground("assets/index_background.jpg");
+    }
+
+    if(countdown_date.length > 0) {
+        setSiteCountdownTimer(custom_background);
+        $("#countdown-date-input").val(countdown_date)
+    }
+}
+
+$("#save-settings").on("click", function() {
+    setCookie("uig_custom_background", $("#custom-background-input").val(), 10000);
+    setCookie("uig_countdown_date", $("#countdown-date-input").val(), 10000);
+    setCookieValuesIfPossible();
 });
 
 function setSiteBackground(background_url) {
@@ -93,6 +111,9 @@ function getNewDisplayText() {
     return displayText[randomVal];
 }
 
+/*
+ * http://www.w3schools.com/js/js_cookies.asp
+ */
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -102,4 +123,11 @@ function getCookie(cname) {
         if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
     }
     return "";
+}
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "max-age="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
 }
