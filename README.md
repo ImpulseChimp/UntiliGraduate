@@ -10,3 +10,6 @@ Website: www.untiligraduate.com
 * Lettering js http://letteringjs.com/
 * Avgrund http://lab.hakim.se/avgrund/
 * Pick Date http://amsul.ca/pickadate.js/date/
+
+For any errors found on the site or improvements wanted to the site, please submit an issue with the appropriate
+tag to document the problem/improvement.
