@@ -1,4 +1,19 @@
+var countdown_date;
+var custom_background;
+
 $(function() {
+    document.cookie="custom_background=http://i.ytimg.com/vi/Wyi1pN1PSp8/maxresdefault.jpg";
+    //Initialize cookie data if available
+    countdown_date = getCookie("countdown_date");
+    custom_background = getCookie("custom_background");
+
+    if(custom_background.length > 0) {
+        setSiteBackground(custom_background);
+    }
+
+    if(countdown_date.length > 0) {
+        setSiteCountdownTimer(custom_background);
+    }
 
     var settingsPopup = $('#settings-popup');
     if(!navigator.cookieEnabled) {
@@ -20,6 +35,14 @@ $(function() {
     $('#countdown-date').pickadate();
 
 });
+
+function setSiteBackground(background_url) {
+    $('#page-container').css('background-image', 'url("' + background_url + '")');
+}
+
+function setSiteCountdownTimer(custom_time) {
+
+}
 
 var displayText = [
     "am free",
@@ -70,3 +93,13 @@ function getNewDisplayText() {
     return displayText[randomVal];
 }
 
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+}
