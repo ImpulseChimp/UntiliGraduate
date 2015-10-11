@@ -8,10 +8,14 @@
 		<meta name="author" content="Christopher M. Wood">
 		<link rel="icon" sizes="16x16 32x32 64x64" href="favicon.ico">
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/avgrund.css"/>
 		<link rel="stylesheet" type="text/css" href="css/flipclock.css"/>
+		<link rel="stylesheet" type="text/css" href="css/classic.css"/>
+		<link rel="stylesheet" type="text/css" href="css/default.date.css"/>
 	</header>
 
 	<body>
+	<div id="page-container">
 		<div id="clock-container">
 			<div id="countdown-clock"></div>
 			<div id="text-container">
@@ -20,18 +24,48 @@
 		</div>
 
 		<div id="content-footer">
-			<a id="github-link" href="https://github.com/ImpulseChimp/UntiliGraduateCountdown" target="_blank">
+			<a href="#" id="github-link">
 				<div id="github-icon" class="footer-icon"></div>
 			</a>
+		</div>
+
+		<div id="settings-popup" class="popup custom">
+			<div class="popup-title">
+				<h2>Customize Your Experience</h2><img src="assets/suprise.png"/>
+			</div>
+			<p>
+				Countdown date: <input id="countdown-date"/>
+			</p>
+			<p>
+				Custom Background: <input placeholder="image url" />
+			</p>
+			<p>
+				Custom Text: Coming Soon...
+			</p>
+		</div>
+
+		<div id="enable-cookies-popup" class="popup custom">
+			<div class="popup-title">
+				<h2>Enable Cookies</h2><img src="assets/suprise.png"/>
+			</div>
+			<p>
+			  To customize your experience on this site
+			  please enable cookies in your browser.
+			</p>
+		</div>
+
 		</div>
 	</body>
 
 	<footer>
 	    <script type="text/javascript" src="js/jQuery/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="js/jQuery/plugins/jquery.avgrund.min.js"></script>
 		<script type="text/javascript" src="js/jQuery/plugins/jquery.fittext.js"></script>
 		<script type="text/javascript" src="js/jQuery/plugins/jquery.lettering.js"></script>
 		<script type="text/javascript" src="js/jQuery/plugins/jquery.textillate.js"></script>
-		<script src="js/flipclock.min.js"></script>
+		<script type="text/javascript" src="js/picker.js"></script>
+		<script type="text/javascript" src="js/picker.date.js"></script>
+		<script type="text/javascript" src="js/flipclock.min.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 	</footer>
 </html>

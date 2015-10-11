@@ -1,3 +1,26 @@
+$(function() {
+
+    var settingsPopup = $('#settings-popup');
+    if(!navigator.cookieEnabled) {
+        settingsPopup = $('#enable-cookies-popup');
+    }
+
+    $('#github-link').avgrund({
+        height: 500,
+        width: 600,
+        holderClass: 'custom',
+        showClose: true,
+        showCloseText: 'close',
+        onBlurContainer: '#page-container',
+        template: settingsPopup,
+        onLoad: function() { settingsPopup.show(); },
+        onUnload: function() { settingsPopup.hide(); }
+    });
+
+    $('#countdown-date').pickadate();
+
+});
+
 var displayText = [
     "am free",
     "can sleep",
@@ -46,3 +69,4 @@ function getNewDisplayText() {
     var randomVal = Math.floor(Math.random() * displayText.length);
     return displayText[randomVal];
 }
+
