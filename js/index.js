@@ -4,18 +4,16 @@ var displayText = [
     "have free time",
     "can relax",
     "can sleep in",
-    "never have tests",
     "can make money",
-    "can enjoy weekends",
     "can start life"
 ]
 var textObject = $("#until-text");
 var displaySeconds = 10000;
 var clock;
 
-
-setCookieValuesIfPossible();
 $(function() {
+
+    setCookieValuesIfPossible();
 
     var popupWidth = 600;
     var popupHeight = 250;
@@ -42,38 +40,25 @@ $(function() {
     $('#custom-grad-date-input').pickadate();
     $('.tiltshift').tiltShift();
 
-
     textObject.textillate({ in: { loop: true, effect: 'rollIn' } });
-
-    var clock;
-
-    var now = new Date();
-    var graduation = new Date(2015, 11, 18, 0, 0, 0);
-    var msTillGraduation = graduation.getTime() - now.getTime();
-    var secondsTillGraduation = msTillGraduation / 1000;
-
-    clock = $('#countdown-clock').FlipClock(secondsTillGraduation, {
-        clockFace: 'DailyCounter',
-        countdown: true
-    });
 
     setInterval(function () {
         var newText = getNewDisplayText();
         swapUntilText(newText);
     }, displaySeconds);
-      
+
 });
 
 function setCookieValuesIfPossible() {
     var countdown_date = getCookie("uig_countdown_date");
     var custom_background = getCookie("uig_custom_background");
-    var year = getCookie("uig_custom_year");
-    var month = getCookie("uig_custom_month");
-    var day = getCookie("uig_custom_day");
+    var year = getCookie("uig_countdown_year");
+    var month = getCookie("uig_countdown_month");
+    var day = getCookie("uig_countdown_day");
 
     if(custom_background.length > 0) {
         setSiteBackground(custom_background);
-        $("#custom-background-input").val(custom_background)
+        $("#custom-background-input").val(custom_background);
     }
     else {
         setSiteBackground("assets/index_background.jpg");
@@ -81,18 +66,27 @@ function setCookieValuesIfPossible() {
 
     if(countdown_date.length > 0) {
         setCountdownClock(year, month, day);
-        $("#countdown-date-input").val(countdown_date)
+        var input = $('#custom-grad-date-input').pickadate();
+        var picker = input.pickadate('picker');
+        picker.set('select', [year, month, day]);
+    }
+    else {
+        setCountdownClock(2015, 11, 18);
+        var input = $('#custom-grad-date-input').pickadate();
+        var picker = input.pickadate('picker');
+        picker.set('select', [2015, 11, 18]);
     }
 }
 
 $("#save-settings").on("click", function() {
     var time = $('#custom-grad-date-input').pickadate('get', 'highlight');
-    
+    var custom_date = $('#custom-grad-date-input').pickadate('get');
+
     setCookie("uig_custom_background", $("#custom-background-input").val(), 10000000);
-    setCookie("uig_countdown_date", $("#countdown-date-input").val(), 10000000);
-    setCookie("uig_countdown_day", time.year, 10000000);
+    setCookie("uig_countdown_date", custom_date, 10000000);
+    setCookie("uig_countdown_year", time.year, 10000000);
     setCookie("uig_countdown_month", time.month, 10000000);
-    setCookie("uig_countdown_year", time.day, 10000000);
+    setCookie("uig_countdown_day", time.day, 10000000);
 
     setCookieValuesIfPossible();
 });
