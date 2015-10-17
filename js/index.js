@@ -1,3 +1,6 @@
+var textObject = $("#until-text");
+var displaySeconds = 10000;
+var clock;
 var displayText = [
     "am free",
     "can sleep",
@@ -7,9 +10,6 @@ var displayText = [
     "can make money",
     "can start life"
 ]
-var textObject = $("#until-text");
-var displaySeconds = 10000;
-var clock;
 
 $(function() {
 
@@ -49,6 +49,23 @@ $(function() {
 
 });
 
+$("#save-settings").on("click", function() {
+    var time = $('#custom-grad-date-input').pickadate('get', 'highlight');
+    var custom_date = $('#custom-grad-date-input').pickadate('get');
+
+    alert("Highlight: " + custom_date);
+
+    setCookie("uig_custom_background", $("#custom-background-input").val(), 10000000);
+    setCookie("uig_countdown_date", custom_date, 10000000);
+    setCookie("uig_countdown_year", time.year, 10000000);
+    setCookie("uig_countdown_month", time.month, 10000000);
+    setCookie("uig_countdown_day", time.day, 10000000);
+
+    alert("INITIAL: " + time.year + ' ' + time.month + ' ' + time.day);
+
+    setCookieValuesIfPossible();
+});
+
 function setCookieValuesIfPossible() {
     var countdown_date = getCookie("uig_countdown_date");
     var custom_background = getCookie("uig_custom_background");
@@ -78,18 +95,6 @@ function setCookieValuesIfPossible() {
     }
 }
 
-$("#save-settings").on("click", function() {
-    var time = $('#custom-grad-date-input').pickadate('get', 'highlight');
-    var custom_date = $('#custom-grad-date-input').pickadate('get');
-
-    setCookie("uig_custom_background", $("#custom-background-input").val(), 10000000);
-    setCookie("uig_countdown_date", custom_date, 10000000);
-    setCookie("uig_countdown_year", time.year, 10000000);
-    setCookie("uig_countdown_month", time.month, 10000000);
-    setCookie("uig_countdown_day", time.day, 10000000);
-
-    setCookieValuesIfPossible();
-});
 
 function setSiteBackground(background_url) {
     $('#page-container').css('background-image', 'url("' + background_url + '")');
