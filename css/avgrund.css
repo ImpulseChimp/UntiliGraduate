@@ -7,7 +7,6 @@ html, body {
 	position: absolute;
 	background: #fff;
 	padding: 10px;
-	overflow: hidden;
 	visibility: hidden;
 	opacity: 0;
 	filter: alpha(opacity=0);
