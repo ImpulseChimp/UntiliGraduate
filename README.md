@@ -13,3 +13,6 @@ Website: www.untiligraduate.com
 
 For any errors found on the site or improvements wanted to the site, please submit an issue with the appropriate
 tag to document the problem/improvement.
+
+#### New Plugins to use potentially
+http://hilios.github.io/jQuery.countdown/
